@@ -1,1 +1,1 @@
-include ':MainModule', ':LibraryModuleA'
+include ':MainModule', ':LibraryModuleA', ':LibraryModuleB', ':MainModuleSecondary'

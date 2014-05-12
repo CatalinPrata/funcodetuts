@@ -14,3 +14,62 @@ allprojects {
         mavenCentral()
     }
 }
+
+subprojects {
+
+    println 'Subprojects start processing'
+
+    afterEvaluate {
+
+        // after each sub project was evaluated get each one and add general settings
+
+        Project project ->
+
+            // libModule is a custom variable defined in ext for each module and it is used to let us know if a module is library or not
+            if (project.libModule) {
+
+                println 'Library module handling: ' + project.name
+
+                // do what we need into all library modules
+                android {
+                    compileSdkVersion 19
+                    buildToolsVersion '19.0.3'
+                    defaultConfig {
+                        minSdkVersion 8
+                        targetSdkVersion 19
+                        versionCode 1
+                        versionName "1.0"
+                    }
+                    buildTypes {
+                        release {
+                            runProguard false
+                            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+                        }
+                    }
+
+                }
+
+            } else {
+
+                println 'Main module handling: ' + project.name
+
+                // do what we need into all main modules
+                android {
+                    compileSdkVersion 19
+                    buildToolsVersion "19.0.3"
+
+                    defaultConfig {
+                        minSdkVersion 8
+                        targetSdkVersion 19
+                        versionCode 1
+                        versionName "1.0"
+                    }
+
+                }
+
+            }
+    }
+
+    println 'Subprojects end processing'
+
+}

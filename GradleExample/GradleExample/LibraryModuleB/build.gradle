@@ -1,5 +1,5 @@
 
-println 'Library Module A handling start'
+println 'Library Module B handling start'
 
 // keep the type of the module (library or non library) into this custom variable
 ext.libModule = true
@@ -8,7 +8,8 @@ apply plugin: 'android-library'
 
 //android {
 //    compileSdkVersion 19
-//    buildToolsVersion '19.0.3'
+//    buildToolsVersion "19.0.3"
+//
 //    defaultConfig {
 //        minSdkVersion 8
 //        targetSdkVersion 19
@@ -21,7 +22,6 @@ apply plugin: 'android-library'
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
 //        }
 //    }
-//
 //}
 
 dependencies {
@@ -29,4 +29,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:19.+'
 }
 
-println 'Library Module A handling end'
+println 'Library Module B handling end'
