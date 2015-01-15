@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Define our custom attributes to be used on the TextView or where we need -->
+    <declare-styleable name="LocalizationAttributes">
+        <attr name="locText" format="string" />
+    </declare-styleable>
+</resources>

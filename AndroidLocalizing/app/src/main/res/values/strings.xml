@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndroidLocalizing</string>
+    <string name="hello_world">en_hello_world</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
