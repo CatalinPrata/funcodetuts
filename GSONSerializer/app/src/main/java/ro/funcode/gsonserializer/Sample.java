@@ -2,19 +2,33 @@ package ro.funcode.gsonserializer;
 
 /**
  * Created by catalinprata on 09/06/15.
+ *
+ * We have a JSON like this one:
+ * {
+    "name": "some name",
+    "aNumber": 233,
+    "data": {
+        "aproperty": "aValue",
+        "subObject": {
+            "property": "otherValue"
+        }
+    }
+    }
+ *
  */
 public class Sample {
 
-    private String aStringProperty;
+    private String name;
     private int aNumber;
-    private String jsonString; // "{ \"$type\": ... }"
+    // keeps the String representation of the JSON object named "data"
+    private String data;
 
-    public String getJsonString() {
-        return jsonString;
+    public String getData() {
+        return data;
     }
 
-    public void setJsonString(String jsonString) {
-        this.jsonString = jsonString;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public int getaNumber() {
@@ -25,11 +39,11 @@ public class Sample {
         this.aNumber = aNumber;
     }
 
-    public String getaStringProperty() {
-        return aStringProperty;
+    public String getName() {
+        return name;
     }
 
-    public void setaStringProperty(String aStringProperty) {
-        this.aStringProperty = aStringProperty;
+    public void setName(String name) {
+        this.name = name;
     }
 }

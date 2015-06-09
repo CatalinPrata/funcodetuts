@@ -10,6 +10,8 @@ import java.lang.reflect.Type;
 
 /**
  * Created by catalinprata on 10/06/15.
+ *
+ * Deserializes the Sample object by keeping the jsonString JSON value as a string instead of parsing that too.
  */
 public class SampleGSONParserAdapter implements
         JsonDeserializer<Sample> {
@@ -21,9 +23,10 @@ public class SampleGSONParserAdapter implements
         JsonObject sampleJsonObject = json.getAsJsonObject();
 
         sample.setaNumber(sampleJsonObject.get("aNumber").getAsInt());
-        sample.setaStringProperty(sampleJsonObject.get("aStringProperty").getAsString());
+        sample.setName(sampleJsonObject.get("name").getAsString());
 
-        sample.setJsonString(sampleJsonObject.get("jsonString").toString());
+        // get the data object as a string
+        sample.setData(sampleJsonObject.get("data").toString());
 
         return sample;
     }

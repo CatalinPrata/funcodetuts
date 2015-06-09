@@ -17,27 +17,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         GsonBuilder gsonBuilder = new GsonBuilder();
+        // make sure we use the custom Deserializer
         gsonBuilder.registerTypeAdapter(Sample.class, new SampleGSONParserAdapter());
 
         Gson gson = gsonBuilder.create();
         Sample sample = gson.fromJson("{\n" +
-                "  \"aNumber\": 23,\n" +
-                "  \"aStringProperty\": \"blabla\",\n" +
-                "  \"jsonString\": {\n" +
-                "    \"$type\": \"a_type\",\n" +
-                "    \"some_other_stuff\": {\n" +
-                "        \"more_stuff\": \"lorem ipsum\"\n" +
-                "    },\n" +
-                "    \"type2\": {\n" +
-                "        \"$type\": \"another_type\",\n" +
-                "        \"other_stuff\": {\n" +
-                "            \"event_more_stuff\": \"lorem ipsum\"\n" +
+                "    \"name\": \"some name\",\n" +
+                "    \"aNumber\": 233,\n" +
+                "    \"data\": {\n" +
+                "        \"aproperty\": \"aValue\",\n" +
+                "        \"subObject\": {\n" +
+                "            \"property\": \"otherValue\"\n" +
                 "        }\n" +
                 "    }\n" +
-                "  }\n" +
                 "}", Sample.class);
 
-        Log.e("test", sample.getJsonString());
+        Log.e("test", sample.getData());
 
     }
 
