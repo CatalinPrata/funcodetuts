@@ -23,7 +23,7 @@ public class Activity3 extends ASuperActivity {
         final Intent nextIntent = new Intent(this, Activity3.class);
 
         mRealm.close();
-                        
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
