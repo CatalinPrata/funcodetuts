@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "255305068079",
+    "firebase_url": "https://test-3cdc2.firebaseio.com",
+    "project_id": "test-3cdc2",
+    "storage_bucket": "test-3cdc2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255305068079:android:5835ad323c7f9bd0",
+        "android_client_info": {
+          "package_name": "com.example.admobfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255305068079-6ou27otpa87o5pegon43iai8hbrf5va3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxko94N30zljgC7IFju4XN4xlAoTgVU0E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
