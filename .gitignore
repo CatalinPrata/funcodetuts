@@ -30,3 +30,6 @@ proguard/
 RealmResetSample/RealmResetModule/build
 RealmResetSample/.gradle
 RealmResetSample/gradle
+AndroidTCPClient/.gradle
+AndroidTCPClient/app/build
+AndroidTCPClient/build

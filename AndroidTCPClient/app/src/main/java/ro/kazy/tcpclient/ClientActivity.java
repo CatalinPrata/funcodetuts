@@ -27,7 +27,7 @@ public class ClientActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        arrayList = new ArrayList<String>();
+        arrayList = new ArrayList<>();
 
         final EditText editText = (EditText) findViewById(R.id.editText);
         Button send = (Button) findViewById(R.id.send_button);
@@ -48,7 +48,7 @@ public class ClientActivity extends Activity {
 
                 //sends the message to the server
                 if (mTcpClient != null) {
-                    mTcpClient.sendMessage(message);
+                    new SendMessageTask().execute(message);
                 }
 
                 //refresh the list
@@ -65,8 +65,7 @@ public class ClientActivity extends Activity {
 
         if (mTcpClient != null) {
             // disconnect
-            mTcpClient.stopClient();
-            mTcpClient = null;
+            new DisconnectTask().execute();
         }
 
     }
@@ -116,13 +115,8 @@ public class ClientActivity extends Activity {
                     return true;
                 }
 
-                // disconnect
-                mTcpClient.stopClient();
-                mTcpClient = null;
-                // clear the data set
-                arrayList.clear();
-                // notify the adapter that the data set has changed.
-                mAdapter.notifyDataSetChanged();
+                new DisconnectTask().execute();
+
                 return true;
             case R.id.preferences:
 
@@ -133,6 +127,55 @@ public class ClientActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    /**
+     * Sends a message using a background task to avoid doing long/network operations on the UI thread
+     */
+    public class SendMessageTask extends AsyncTask<String, Void, Void> {
+
+        @Override
+        protected Void doInBackground(String... params) {
+
+            // send the message
+            mTcpClient.sendMessage(params[0]);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void nothing) {
+            super.onPostExecute(nothing);
+            // clear the data set
+            arrayList.clear();
+            // notify the adapter that the data set has changed.
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    /**
+     * Disconnects using a background task to avoid doing long/network operations on the UI thread
+     */
+    public class DisconnectTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            // disconnect
+            mTcpClient.stopClient();
+            mTcpClient = null;
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void nothing) {
+            super.onPostExecute(nothing);
+            // clear the data set
+            arrayList.clear();
+            // notify the adapter that the data set has changed.
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     public class ConnectTask extends AsyncTask<String, String, TcpClient> {
